@@ -1,0 +1,26 @@
+{{#step-manager as |w|}}
+
+  {{#w.step name='user'}}
+    {{partial 'config/wizard/network'}}
+    {{partial 'partials/wizard-next-button'}}
+  {{/w.step}}
+
+  {{#w.step name='network'}}
+    {{partial 'config/wizard/network'}}
+    {{partial 'partials/wizard-back-button'}}
+    {{partial 'partials/wizard-next-button'}}
+  {{/w.step}}
+
+  {{#w.step name='ssh'}}
+    {{partial 'config/wizard/ssh'}}
+    {{partial 'partials/wizard-back-button'}}
+    {{partial 'partials/wizard-next-button'}}
+  {{/w.step}}
+
+  {{#w.step name='overview'}}
+    {{partial 'config/wizard/overview'}}
+    <p class="center-align">
+      {{partial 'partials/wizard-finish-button'}}
+    </p>
+  {{/w.step}}
+{{/step-manager}}

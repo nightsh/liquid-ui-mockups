@@ -1,0 +1,128 @@
+<h3>Configuration overview</h3>
+
+<section class="row">
+
+  <section class="col s6">
+    <h5>User</h5>
+    Name: {{model.user.name}}
+    <button {{action w.transition-to 'user'}}
+      class="waves-effect btn-flat right">
+      Change
+    </button>
+  </section>
+
+  <section class="col s6">
+    <h5>SSH</h5>
+    Enabled: {{model.ssh.enabled}}
+    <button {{action w.transition-to 'ssh'}}
+      class="waves-effect btn-flat right">
+      Change
+    </button>
+  </section>
+
+  <hr>
+
+  <section class="col s6">
+    <h5>LAN</h5>
+      <table class="highlight">
+        <tbody>
+          <tr>
+            <td>Interface</td>
+            <td>
+              {{#if model.network.lan.custom_interface}}
+                {{model.network.lan.custom_interface}}
+              {{else}}
+                {{model.network.lan.interface}}
+              {{/if}}
+            </td>
+          </tr>
+        {{#if (eq model.network.lan.interface 'wlan0')}}
+          <tr>
+            <td>Wifi</td>
+            <td> {{model.network.lan.wifi.ssid}} </td>
+          </tr>
+        {{/if}}
+          <tr>
+            <td>Mode</td>
+            <td> {{model.network.lan.mode}} </td>
+          </tr>
+        {{#if (eq model.network.lan.mode 'dhcp')}}
+          <tr>
+            <td>DHCP</td>
+            <td>
+              IP:      {{model.network.lan.dhcp.ip}}<br>
+              Netmask: {{model.network.lan.dhcp.netmask}}<br>
+              Range:   {{model.network.lan.dhcp.range}}<br>
+              DNS:     {{model.network.lan.dhcp.dns}}<br>
+            </td>
+          </tr>
+        {{/if}}
+        {{#if (eq model.network.lan.mode 'static')}}
+          <tr>
+            <td>Static</td>
+            <td>
+              IP:      {{model.network.lan.static.ip}}<br>
+              Netmask: {{model.network.lan.static.netmask}}<br>
+              Gateway: {{model.network.lan.static.gateway}}<br>
+              DNS:     {{model.network.lan.static.dns}}<br>
+            </td>
+          </tr>
+        {{/if}}
+        </tbody>
+      </table>
+    <button {{action w.transition-to 'ssh'}}
+      class="waves-effect btn-flat right">
+      Change
+    </button>
+  </section>
+
+  <section class="col s6">
+    <h5>WAN</h5>
+      <table class="highlight">
+        <tbody>
+          <tr>
+            <td>Interface</td>
+            <td>
+              {{#if model.network.wan.custom_interface}}
+                {{model.network.wan.custom_interface}}
+              {{else}}
+                {{model.network.wan.interface}}
+              {{/if}}
+            </td>
+          </tr>
+        {{#if (eq model.network.wan.interface 'wlan0')}}
+          <tr>
+            <td>Wifi</td>
+            <td> {{model.network.wan.wifi.ssid}} </td>
+          </tr>
+        {{/if}}
+          <tr>
+            <td>Mode</td>
+            <td> {{model.network.wan.mode}} </td>
+          </tr>
+        {{#if (eq model.network.wan.mode 'dhcp')}}
+          <tr>
+            <td>DHCP</td>
+            <td>True</td>
+          </tr>
+        {{/if}}
+        {{#if (eq model.network.wan.mode 'static')}}
+          <tr>
+            <td>Static</td>
+            <td>
+              IP:      {{model.network.wan.static.ip}}<br>
+              Netmask: {{model.network.wan.static.netmask}}<br>
+              Gateway: {{model.network.wan.static.gateway}}<br>
+              DNS:     {{model.network.wan.static.dns}}<br>
+            </td>
+          </tr>
+        {{/if}}
+        </tbody>
+      </table>
+    <button {{action w.transition-to 'ssh'}}
+      class="waves-effect btn-flat right">
+      Change
+    </button>
+  </section>
+
+</section>

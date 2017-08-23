@@ -1,0 +1,21 @@
+<h3>Secure Shell</h3>
+
+<div class="row">
+  <form class="col s12">
+    {{md-switch checked=model.ssh.enabled
+      onLabel="Enabled"
+      offLabel="Disabled"}}
+
+    {{#if model.ssh.enabled}}
+      <hr>
+      {{md-input
+        value=model.ssh.port
+        label='SSH port'
+        class="col s2"}}
+      <section class="row">
+        {{md-textarea label='Authorized keys (one per line)'
+          value=model.ssh.keys class="col s12"}}
+      </section>
+    {{/if}}
+  </form>
+</div>

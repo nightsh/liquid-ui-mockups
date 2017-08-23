@@ -7,6 +7,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('config', function() {
+    this.route('wizard');
+    this.route('reset');
+    this.route('section', { path: ':section' });
+  });
 });
 
 export default Router;

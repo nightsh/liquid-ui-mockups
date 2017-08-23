@@ -1,0 +1,7 @@
+{
+  "name": "liquid-webui",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "materialize": "0.97.6"
+  }
+}

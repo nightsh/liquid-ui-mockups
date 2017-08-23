@@ -1,5 +1,22 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#md-navbar name='Liquid admin' class='indigo'}}
+  <!-- A workaround to get the "active" class
+    to apply to the active <li> automatically -->
+  {{#if firstboot}}
+  {{else}}
+    {{#link-to 'config.wizard' tagName='li'}}
+      {{link-to 'Config wizard' 'config.wizard'}}
+    {{/link-to}}
+    {{#link-to 'config.section' 'overview' tagName='li'}}
+      {{link-to 'Config panel' 'config.section' 'overview'}}
+    {{/link-to}}
+  {{/if}}
+{{/md-navbar}}
 
-{{outlet}}
+
+<section class="container">
+  <div class="row">
+    <div class="col s12">
+      {{outlet}}
+    </div>
+  </div>
+</section>

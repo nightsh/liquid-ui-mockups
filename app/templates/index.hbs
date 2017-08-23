@@ -1,0 +1,18 @@
+{{#if firstboot}}
+
+  <h1 class="center-align">Welcome!</h1>
+  <p class="center-align">
+    This is the first time you booted this thing. You need to go through the configuration wizard in order to make it work.
+    <br>
+    <br>
+    <br>
+    {{link-to "I'm ready, let's go!" "config.wizard" class="btn btn-large"}}
+  </p>
+
+{{else}}
+
+  {{link-to 'Config wizard' 'config.wizard'}}
+  <br>
+  {{link-to 'Config panel' 'config.section' 'overview'}}
+
+{{/if}}

@@ -1,0 +1,158 @@
+<h3>Network settings</h3>
+
+<div class="row">
+  <form class="col s12">
+    <section class="row">
+      <h5>LAN</h5>
+      {{md-select content=config.network.lan.interfaces
+        value=model.network.lan.interface
+        label="Interface"
+        prompt="Please choose..."
+        class="col s6"}}
+
+      {{#if (eq model.network.lan.interface 'other')}}
+        {{md-input
+          value=model.network.lan.custom_interface
+          label='Interface name'
+          class="col s12"}}
+      {{/if}}
+
+      {{#if (eq model.network.lan.interface 'wlan0')}}
+      <div class="col s6">
+        <div class="row">
+          {{md-input
+            value=model.network.lan.wifi.ssid
+            label='SSID'
+            class="col s12"}}
+          {{md-input
+            value=model.network.lan.wifi.password
+            label='Password'
+            type='password'
+            class="col s12"}}
+        </div>
+      </div>
+      {{/if}}
+    </section>
+
+    <section class="row">
+      {{#if model.network.lan.interface}}
+        {{md-select content=config.network.lan.modes
+          value=model.network.lan.mode
+          label="LAN mode"
+          prompt="Please choose..."
+          class="col s6"}}
+
+        {{#if (eq model.network.lan.mode 'static')}}
+          <div class="col s6">
+            <div class="row">
+              {{md-input
+                value=model.network.lan.static.ip
+                label='IP'
+                class="col s12"}}
+              {{md-input
+                value=model.network.lan.static.netmask
+                label='Netmask'
+                class="col s12"}}
+              {{md-input
+                value=model.network.lan.static.gateway
+                label='Gateway'
+                class="col s12"}}
+              {{md-input
+                value=model.network.lan.static.dns
+                label='DNS'
+                class="col s12"}}
+            </div>
+          </div>
+        {{/if}}
+
+        {{#if (eq model.network.lan.mode 'dhcp')}}
+          <div class="col s6">
+            <div class="row">
+              {{md-input
+                value=model.network.lan.static.ip
+                label='IP'
+                class="col s12"}}
+              {{md-input
+                value=model.network.lan.static.netmask
+                label='Netmask'
+                class="col s12"}}
+              {{md-input
+                value=model.network.lan.static.range
+                label='Range'
+                class="col s12"}}
+              {{md-switch checked=model.network.lan.dhcp.dns
+                onLabel="DNS enabled"
+                offLabel="DNS disabled"}}
+            </div>
+          </div>
+        {{/if}}
+      {{/if}}
+    </section>
+
+    <hr>
+
+    <section class="row">
+      <h5>WAN</h5>
+      {{md-select content=config.network.wan.interfaces
+        value=model.network.wan.interface
+        label="Interface"
+        prompt="Please choose..."
+        class="col s6"}}
+
+      {{#if (eq model.network.wan.interface 'other')}}
+        {{md-input
+          value=model.network.wan.custom_interface
+          label='Interface name'
+          class="col s12"}}
+      {{/if}}
+
+      {{#if (eq model.network.wan.interface 'wwan.')}}
+      <div class="col s6">
+        <div class="row">
+          {{md-input
+            value=model.network.wan.wifi.ssid
+            label='SSID'
+            class="col s12"}}
+          {{md-input
+            value=model.network.wan.wifi.password
+            label='Password'
+            type='password'
+            class="col s12"}}
+        </div>
+      </div>
+      {{/if}}
+    </section>
+
+    <section class="row">
+      {{#if model.network.wan.interface}}
+        {{md-select content=config.network.wan.modes
+          value=model.network.wan.mode
+          label="WAN.mode"
+          prompt="Please choose..."
+          class="col s6"}}
+
+        {{#if (eq model.network.wan.mode 'static')}}
+          <div class="col s6">
+            <div class="row">
+              {{md-input
+                value=model.network.wan.static.ip
+                label='IP'
+                class="col s12"}}
+              {{md-input
+                value=model.network.wan.static.netmask
+                label='Netmask'
+                class="col s12"}}
+              {{md-input
+                value=model.network.wan.static.gateway
+                label='Gateway'
+                class="col s12"}}
+              {{md-switch checked=model.network.wan.static.dns
+                onLabel="DNS enabled"
+                offLabel="DNS disabled"}}
+            </div>
+          </div>
+        {{/if}}
+      {{/if}}
+    </section>
+  </form>
+</div>
